@@ -1,4 +1,3 @@
-# models/matrix_factorization.py
 from sklearn.decomposition import TruncatedSVD
 from data_processing.feature_extraction import create_user_item_matrix
 from data_processing.data_ingestion import get_data

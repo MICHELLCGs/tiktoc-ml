@@ -1,4 +1,3 @@
-# recommendation_engine/recommender.py
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from models.tfidf_model import load_tfidf_model

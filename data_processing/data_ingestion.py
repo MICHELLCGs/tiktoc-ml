@@ -1,4 +1,3 @@
-# data_processing/data_ingestion.py
 import pandas as pd
 from sqlalchemy import text
 from config import engine, es

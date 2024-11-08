@@ -1,4 +1,3 @@
-# models/tfidf_model.py
 from data_processing.feature_extraction import compute_tfidf
 from data_processing.data_cleaning import clean_data
 from data_processing.data_ingestion import get_data

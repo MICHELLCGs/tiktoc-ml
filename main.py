@@ -1,4 +1,3 @@
-# main.py
 from data_processing.data_ingestion import get_data
 from data_processing.data_cleaning import clean_data
 from models.tfidf_model import train_tfidf_model
@@ -27,14 +26,14 @@ def main():
     listener_thread.start()
     
     # Generar recomendaciones para un usuario de ejemplo
-    user_id = "user_123"  # Reemplaza con un ID de usuario real
+    user_id = "user_123"
     recommended_videos = get_recommendations(user_id, type="videos")
     recommended_searches = get_recommendations(user_id, type="searches")
     
     print("Videos Recomendados:", recommended_videos)
     print("Búsquedas Recomendadas:", recommended_searches)
     
-    # Mantener el programa en ejecución para escuchar eventos
+
     listener_thread.join()
 
 if __name__ == "__main__":

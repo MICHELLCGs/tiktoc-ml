@@ -1,4 +1,3 @@
-# recommendation_engine/cache_manager.py
 import pickle
 from config import redis_client
 

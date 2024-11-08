@@ -1,4 +1,3 @@
-# data_processing/feature_extraction.py
 from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
 import numpy as np

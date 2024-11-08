@@ -1,4 +1,3 @@
-# models/engagement_model.py
 import pandas as pd
 from data_processing.data_ingestion import get_data
 from data_processing.data_cleaning import clean_data
