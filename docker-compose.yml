@@ -1,0 +1,67 @@
+services:
+  # PostgreSQL
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+  # Elasticsearch
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+    networks:
+      - app_network
+
+  # Redis
+  redis:
+    image: 'bitnami/redis:latest'
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    ports:
+      - "${REDIS_PORT}:6379"
+    networks:
+      - app_network
+
+  # Redpanda (usando la imagen oficial de Redpanda)
+  redpanda:
+    image: vectorized/redpanda:v21.11.6
+    ports:
+      - "9092:9092"
+    environment:
+      - REDPANDA_LISTENER_SECURITY_PROTOCOL=plaintext
+      - REDPANDA_LISTENER_DEFAULT=0.0.0.0:9092
+      - REDPANDA_LISTENER_ID=internal
+    command:
+      - redpanda
+      - start
+      - --overprovisioned
+      - --smp=1
+      - --memory=1G
+      - --reserve-memory=0M
+      - --node-id=0
+      - --check=false
+    networks:
+      - app_network
+    healthcheck:
+      test: [ "CMD", "rpk", "cluster", "health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  postgres_data:
+
+networks:
+  app_network:
+    driver: bridge

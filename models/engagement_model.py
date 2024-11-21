@@ -1,4 +1,5 @@
 import pandas as pd
+from config import redis_client
 from data_processing.data_ingestion import get_data
 from data_processing.data_cleaning import clean_data
 
