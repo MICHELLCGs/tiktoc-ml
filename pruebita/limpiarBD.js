@@ -18,7 +18,8 @@ async function clearDatabase() {
 
     // Eliminar todas las tablas
     const dropTablesQuery = `
-      DO $$ DECLARE
+      DO $$ 
+      DECLARE
         r RECORD;
       BEGIN
         FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname = 'public') LOOP
@@ -26,7 +27,6 @@ async function clearDatabase() {
         END LOOP;
       END $$;
     `;
-
     await client.query(dropTablesQuery);
 
     // Volver a habilitar restricciones de llave foránea
