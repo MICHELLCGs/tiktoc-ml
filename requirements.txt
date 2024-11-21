@@ -5,3 +5,4 @@ redis
 elasticsearch 
 sqlalchemy
 kafka-python
+psycopg2

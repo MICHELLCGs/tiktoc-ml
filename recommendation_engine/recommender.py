@@ -4,7 +4,7 @@ from models.tfidf_model import load_tfidf_model
 from models.matrix_factorization import load_matrix_factorization
 from models.engagement_model import load_engagement_scores
 from data_processing.data_ingestion import get_data
-from cache_manager import cache_set, cache_get
+from .cache_manager import cache_set, cache_get
 import pandas as pd
 
 def get_recommendations(user_id, type="videos"):
